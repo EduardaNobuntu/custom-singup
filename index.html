@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            function getParameterByName(name) {
+                const url = window.location.href;
+                const name = name.replace(/[\[\]]/g, '\\$&');
+                const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+                const results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+            const name = getParameterByName('name');
+            const email = getParameterByName('email');
+            if (name) {
+                document.getElementById('givenName').value = name;
+            }
+            if (email) {
+                document.getElementById('email').value = email;
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="api">
+        <div class="entry">
+            <label for="givenName">Name:</label>
+            <input type="text" id="givenName" name="givenName" required>
+        </div>
+        <div class="entry">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <button type="submit">Sign Up</button>
+    </div>
+</body>
+</html>
